@@ -30,15 +30,15 @@ Teams %>%
   summarize(HR = sum(HR),
             AB = sum(AB),
             SO = sum(SO),
-            Rate = HR / (AB - SO)) -> S3
-head(S3)
+            Rate = HR / (AB - SO)) -> HR
+head(HR)
 ```
 
 #### Graphing Home Run Rates
 
 Using ggplot2, yearID on the x-axis and Rate on the y-axis. Using geom_smooth to graph a line (lowess) to see the trend.
 ```{r}
-ggplot(S3, aes(yearID, Rate)) +
+ggplot(HR, aes(yearID, Rate)) +
   geom_point() +
   geom_smooth(span = 0.2) +
   labs(title = "Overall HR Rate since 1960")
